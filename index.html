@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>קפה שקד | בית קפה ומאפייה</title>
+<meta name="description" content="בית קפה ומאפייה שכונתי. קפה טרי, מאפים מהתנור, ארוחות בוקר כל היום.">
+<!-- Local SEO: this block is what makes the business show up on Google Maps searches -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"קפה שקד",
+"telephone":"+972-50-000-0000","address":{"@type":"PostalAddress","streetAddress":"רחוב הדוגמה 12","addressLocality":"תל אביב","addressCountry":"IL"},
+"openingHours":["Su-Th 07:00-20:00","Fr 07:00-15:00"],"servesCuisine":"Cafe","priceRange":"₪₪"}
+</script>
+<style>
+:root{
+  --ink:#1a1512; --muted:#6b5d54; --line:#e8ded5;
+  --bg:#fdfbf8; --card:#fff; --accent:#a8541f; --accent-soft:#f6ece3;
+  --radius:16px; --shadow:0 2px 12px rgba(26,21,18,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Heebo","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+/* ---- sticky call bar: the single most important element on a local business site ---- */
+.callbar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;gap:1px;background:var(--line);box-shadow:0 -2px 16px rgba(0,0,0,.08)}
+.callbar a{flex:1;padding:15px 8px;text-align:center;background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:7px}
+.callbar a.primary{background:var(--accent);color:#fff}
+.callbar svg{width:18px;height:18px;flex:none}
+@media(min-width:760px){.callbar{display:none}}
+
+/* ---- header ---- */
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.logo{font-size:21px;font-weight:800;letter-spacing:-.3px}
+.logo span{color:var(--accent)}
+.nav-links{display:none;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
+.nav-links a:hover{color:var(--accent)}
+.nav .cta{display:none;background:var(--accent);color:#fff;padding:9px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px}
+@media(min-width:760px){.nav-links,.nav .cta{display:flex}}
+
+/* ---- hero ---- */
+.hero{padding:56px 0 48px;text-align:center}
+.badge{display:inline-block;background:var(--accent-soft);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
+.hero h1{font-size:clamp(30px,6vw,46px);line-height:1.15;font-weight:800;letter-spacing:-1px;margin-bottom:14px}
+.hero p{font-size:18px;color:var(--muted);max-width:520px;margin:0 auto 26px}
+.btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:8px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+
+/* ---- status pill: open/closed, computed live ---- */
+.status{margin-top:22px;font-size:15px;font-weight:600}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:7px;vertical-align:middle}
+.open .dot{background:#2e9e5b;box-shadow:0 0 0 3px rgba(46,158,91,.18)}
+.closed .dot{background:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.15)}
+.open{color:#2e7d4f}.closed{color:#a33226}
+
+/* ---- sections ---- */
+section{padding:46px 0}
+h2{font-size:27px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:26px}
+
+.menu-grid{display:grid;gap:14px;grid-template-columns:1fr}
+@media(min-width:620px){.menu-grid{grid-template-columns:1fr 1fr}}
+.item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 19px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.item h3{font-size:16px;font-weight:700;margin-bottom:3px}
+.item p{font-size:14px;color:var(--muted);line-height:1.5}
+.price{font-weight:800;color:var(--accent);white-space:nowrap;font-size:16px}
+
+.hours-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 20px;box-shadow:var(--shadow)}
+.hours-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.hours-row:last-child{border-bottom:none}
+.hours-row.today{font-weight:700;color:var(--accent)}
+
+.info-grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:700px){.info-grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.card h3{font-size:17px;margin-bottom:12px;font-weight:700}
+.card a{color:var(--accent);text-decoration:none;font-weight:600}
+.card .line{display:flex;gap:10px;align-items:center;padding:7px 0;font-size:15px;color:var(--muted)}
+.card .line svg{width:17px;height:17px;flex:none;color:var(--accent)}
+
+footer{background:var(--ink);color:#c9bcb2;padding:34px 0 90px;text-align:center;font-size:14px}
+footer a{color:#fff;text-decoration:none}
+@media(min-width:760px){footer{padding-bottom:34px}}
+.credit{margin-top:14px;font-size:12.5px;opacity:.65}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">קפה<span>שקד</span></div>
+    <nav class="nav-links">
+      <a href="#menu">תפריט</a>
+      <a href="#hours">שעות</a>
+      <a href="#contact">צור קשר</a>
+    </nav>
+    <a class="cta" href="tel:+972500000000">התקשרו עכשיו</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div class="badge">★ ★ ★ ★ ★ &nbsp;בית קפה שכונתי משנת 2011</div>
+    <h1>קפה טרי,<br>מאפים מהתנור</h1>
+    <p>ארוחות בוקר כל היום, מאפים שנאפים כל בוקר במקום, ופינה שקטה ברחוב הדוגמה.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="tel:+972500000000">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        התקשרו
+      </a>
+      <a class="btn btn-ghost" href="https://waze.com/ul?q=רחוב%20הדוגמה%2012%20תל%20אביב" target="_blank" rel="noopener">ניווט אלינו</a>
+    </div>
+    <div class="status" id="status"><span class="dot"></span><span id="status-text">בודק…</span></div>
+  </section>
+
+  <section id="menu">
+    <h2>התפריט</h2>
+    <p class="sub">מתעדכן לפי העונה — זו רק טעימה</p>
+    <div class="menu-grid">
+      <div class="item"><div><h3>ארוחת בוקר ישראלית</h3><p>שתי ביצים, סלט, גבינות, לחם הבית</p></div><div class="price">₪58</div></div>
+      <div class="item"><div><h3>קרואסון חמאה</h3><p>נאפה במקום כל בוקר</p></div><div class="price">₪14</div></div>
+      <div class="item"><div><h3>הפוך גדול</h3><p>פולים קלויים בקליה מקומית</p></div><div class="price">₪14</div></div>
+      <div class="item"><div><h3>טוסט גבינות</h3><p>עם עגבנייה ופסטו</p></div><div class="price">₪38</div></div>
+      <div class="item"><div><h3>שקשוקה</h3><p>מוגשת עם לחם הבית</p></div><div class="price">₪52</div></div>
+      <div class="item"><div><h3>עוגת שוקולד</h3><p>הכי מבוקשת אצלנו</p></div><div class="price">₪22</div></div>
+    </div>
+  </section>
+
+  <section id="hours">
+    <h2>שעות פתיחה</h2>
+    <p class="sub">היום מסומן בכתום</p>
+    <div class="hours-card" id="hours-card">
+      <div class="hours-row" data-day="0"><span>ראשון</span><span>07:00 – 20:00</span></div>
+      <div class="hours-row" data-day="1"><span>שני</span><span>07:00 – 20:00</span></div>
+      <div class="hours-row" data-day="2"><span>שלישי</span><span>07:00 – 20:00</span></div>
+      <div class="hours-row" data-day="3"><span>רביעי</span><span>07:00 – 20:00</span></div>
+      <div class="hours-row" data-day="4"><span>חמישי</span><span>07:00 – 20:00</span></div>
+      <div class="hours-row" data-day="5"><span>שישי</span><span>07:00 – 15:00</span></div>
+      <div class="hours-row" data-day="6"><span>שבת</span><span>סגור</span></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>צור קשר</h2>
+    <p class="sub">הדרך הכי מהירה — פשוט להתקשר</p>
+    <div class="info-grid">
+      <div class="card">
+        <h3>פרטים</h3>
+        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg><a href="tel:+972500000000">050-000-0000</a></div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>רחוב הדוגמה 12, תל אביב</div>
+        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>hello@example.co.il</div>
+      </div>
+      <div class="card">
+        <h3>הזמנות וקייטרינג</h3>
+        <p style="color:var(--muted);font-size:15px;margin-bottom:14px">מזמינים מראש לאירועים, ישיבות ומגשי אירוח.</p>
+        <a href="https://wa.me/972500000000" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px">שלחו הודעה בוואטסאפ</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <strong style="color:#fff;font-size:17px">קפה שקד</strong>
+    <p style="margin-top:6px">רחוב הדוגמה 12, תל אביב · <a href="tel:+972500000000">050-000-0000</a></p>
+    <p class="credit">אתר לדוגמה — נבנה כהדגמה</p>
+  </div>
+</footer>
+
+<!-- mobile sticky bar -->
+<div class="callbar">
+  <a class="primary" href="tel:+972500000000">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+    התקשרו
+  </a>
+  <a href="https://waze.com/ul?q=רחוב%20הדוגמה%2012%20תל%20אביב" target="_blank" rel="noopener">ניווט</a>
+  <a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a>
+</div>
+
+<script>
+// Live open/closed status + today's row highlight.
+// Hours as [open, close] in minutes; null = closed. Index = JS day (0=Sunday).
+var HOURS = [[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,900],null];
+function render(){
+  var now = new Date();
+  var day = now.getDay();
+  var mins = now.getHours()*60 + now.getMinutes();
+  var today = HOURS[day];
+  var el = document.getElementById('status');
+  var txt = document.getElementById('status-text');
+  var isOpen = !!today && mins >= today[0] && mins < today[1];
+  el.className = 'status ' + (isOpen ? 'open' : 'closed');
+  if (isOpen) {
+    var left = today[1] - mins;
+    txt.textContent = left <= 60 ? 'פתוח — נסגר בעוד ' + left + ' דק\'' : 'פתוח עכשיו';
+  } else {
+    // find the next day that has hours
+    var d = day, hops = 0;
+    while (hops < 7) { d = (d+1)%7; hops++; if (HOURS[d]) break; }
+    var names = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+    var opensToday = today && mins < today[0];
+    txt.textContent = opensToday ? 'סגור — נפתח היום ב-' + String(Math.floor(today[0]/60)).padStart(2,'0') + ':00'
+                                 : 'סגור — נפתח ב' + names[d];
+  }
+  var row = document.querySelector('.hours-row[data-day="' + day + '"]');
+  if (row) row.classList.add('today');
+}
+render();
+setInterval(render, 60000);
+</script>
+</body>
+</html>
