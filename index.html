@@ -2,217 +2,409 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>קפה שקד | בית קפה ומאפייה</title>
-<meta name="description" content="בית קפה ומאפייה שכונתי. קפה טרי, מאפים מהתנור, ארוחות בוקר כל היום.">
-<!-- Local SEO: this block is what makes the business show up on Google Maps searches -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>קפה שקד · בית קפה ומאפייה בתל אביב</title>
+<meta name="description" content="בית קפה ומאפייה שכונתי בתל אביב. מאפים מהתנור כל בוקר, קפה בקליה מקומית, ארוחות בוקר כל היום.">
+<meta property="og:title" content="קפה שקד · בית קפה ומאפייה">
+<meta property="og:description" content="מאפים מהתנור כל בוקר. ארוחות בוקר כל היום.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=80">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;900&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"קפה שקד",
-"telephone":"+972-50-000-0000","address":{"@type":"PostalAddress","streetAddress":"רחוב הדוגמה 12","addressLocality":"תל אביב","addressCountry":"IL"},
-"openingHours":["Su-Th 07:00-20:00","Fr 07:00-15:00"],"servesCuisine":"Cafe","priceRange":"₪₪"}
+"image":"https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&q=80",
+"telephone":"+972-50-000-0000","priceRange":"₪₪","servesCuisine":"בית קפה",
+"address":{"@type":"PostalAddress","streetAddress":"רחוב הדוגמה 12","addressLocality":"תל אביב","addressCountry":"IL"},
+"geo":{"@type":"GeoCoordinates","latitude":32.0853,"longitude":34.7818},
+"openingHoursSpecification":[
+ {"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday","Monday","Tuesday","Wednesday","Thursday"],"opens":"07:00","closes":"20:00"},
+ {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"07:00","closes":"15:00"}]}
 </script>
 <style>
 :root{
-  --ink:#1a1512; --muted:#6b5d54; --line:#e8ded5;
-  --bg:#fdfbf8; --card:#fff; --accent:#a8541f; --accent-soft:#f6ece3;
-  --radius:16px; --shadow:0 2px 12px rgba(26,21,18,.07);
+  --ink:#231a14; --ink-soft:#5a4a3f; --muted:#8a7868;
+  --cream:#fbf7f2; --card:#fff; --line:#eae0d5;
+  --accent:#b4541f; --accent-dk:#8f3f14; --accent-soft:#f8ece3;
+  --gold:#c9972b;
+  --r:18px; --shadow:0 1px 3px rgba(35,26,20,.05),0 8px 28px rgba(35,26,20,.07);
+  --serif:"Frank Ruhl Libre",Georgia,serif;
+  --sans:"Assistant","Segoe UI",system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Heebo","Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+a{color:inherit}
 
-/* ---- sticky call bar: the single most important element on a local business site ---- */
-.callbar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:flex;gap:1px;background:var(--line);box-shadow:0 -2px 16px rgba(0,0,0,.08)}
-.callbar a{flex:1;padding:15px 8px;text-align:center;background:var(--card);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:7px}
-.callbar a.primary{background:var(--accent);color:#fff}
-.callbar svg{width:18px;height:18px;flex:none}
-@media(min-width:760px){.callbar{display:none}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
-/* ---- header ---- */
-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-.logo{font-size:21px;font-weight:800;letter-spacing:-.3px}
-.logo span{color:var(--accent)}
-.nav-links{display:none;gap:26px}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:500}
-.nav-links a:hover{color:var(--accent)}
-.nav .cta{display:none;background:var(--accent);color:#fff;padding:9px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px}
-@media(min-width:760px){.nav-links,.nav .cta{display:flex}}
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .35s,box-shadow .35s,padding .35s;padding:18px 0}
+header.solid{background:rgba(251,247,242,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:11px 0}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:25px;font-weight:900;letter-spacing:-.5px;color:#fff;transition:color .35s}
+header.solid .logo{color:var(--ink)}
+.logo em{font-style:normal;color:var(--gold)}
+header.solid .logo em{color:var(--accent)}
+.nav-links{display:none;gap:30px;font-size:15.5px;font-weight:600}
+.nav-links a{color:rgba(255,255,255,.92);text-decoration:none;transition:color .25s;position:relative}
+header.solid .nav-links a{color:var(--ink-soft)}
+.nav-links a::after{content:"";position:absolute;bottom:-5px;right:0;width:0;height:2px;background:var(--accent);transition:width .28s}
+.nav-links a:hover::after{width:100%}
+.nav .call{display:none;background:var(--accent);color:#fff;padding:10px 21px;border-radius:999px;text-decoration:none;font-weight:700;font-size:14.5px;box-shadow:0 4px 14px rgba(180,84,31,.3);transition:transform .2s,box-shadow .2s}
+.nav .call:hover{transform:translateY(-2px);box-shadow:0 7px 20px rgba(180,84,31,.38)}
+@media(min-width:850px){.nav-links,.nav .call{display:flex;align-items:center}}
 
-/* ---- hero ---- */
-.hero{padding:56px 0 48px;text-align:center}
-.badge{display:inline-block;background:var(--accent-soft);color:var(--accent);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:18px}
-.hero h1{font-size:clamp(30px,6vw,46px);line-height:1.15;font-weight:800;letter-spacing:-1px;margin-bottom:14px}
-.hero p{font-size:18px;color:var(--muted);max-width:520px;margin:0 auto 26px}
-.btns{display:flex;gap:11px;justify-content:center;flex-wrap:wrap}
-.btn{padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:600;font-size:16px;display:inline-flex;align-items:center;gap:8px}
-.btn-primary{background:var(--accent);color:#fff}
-.btn-ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;padding-bottom:62px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;animation:slow 26s ease-in-out infinite alternate}
+@keyframes slow{from{transform:scale(1.04)}to{transform:scale(1.14)}}
+@media(prefers-reduced-motion:reduce){.hero-bg img{animation:none}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(26,18,13,.93) 0%,rgba(26,18,13,.55) 42%,rgba(26,18,13,.3) 100%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--gold);font-size:13.5px;font-weight:700;letter-spacing:1.6px;margin-bottom:17px}
+.eyebrow::before{content:"";width:34px;height:1.5px;background:var(--gold)}
+.hero h1{font-family:var(--serif);font-size:clamp(40px,8.5vw,78px);line-height:1.04;font-weight:900;color:#fff;letter-spacing:-1.8px;margin-bottom:18px;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+.hero h1 em{font-style:normal;color:var(--gold);display:block}
+.hero p{font-size:clamp(16.5px,2.4vw,20px);color:rgba(255,255,255,.88);max-width:450px;margin-bottom:28px;font-weight:300}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{padding:14px 30px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:9px;transition:transform .22s,box-shadow .22s,background .22s;border:none;cursor:pointer}
+.btn svg{width:18px;height:18px}
+.btn-main{background:var(--accent);color:#fff;box-shadow:0 6px 22px rgba(180,84,31,.42)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 11px 30px rgba(180,84,31,.5);background:var(--accent-dk)}
+.btn-glass{background:rgba(255,255,255,.14);color:#fff;backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.3)}
+.btn-glass:hover{background:rgba(255,255,255,.25);transform:translateY(-3px)}
+.live{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:15px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);backdrop-filter:blur(9px);padding:9px 17px;border-radius:999px;border:1px solid rgba(255,255,255,.18)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.live.open .dot{background:#48d07d;box-shadow:0 0 0 4px rgba(72,208,125,.25);animation:pulse 2.2s infinite}
+.live.closed .dot{background:#ef6a5a;box-shadow:0 0 0 4px rgba(239,106,90,.22)}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(72,208,125,.25)}50%{box-shadow:0 0 0 8px rgba(72,208,125,.06)}}
 
-/* ---- status pill: open/closed, computed live ---- */
-.status{margin-top:22px;font-size:15px;font-weight:600}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-left:7px;vertical-align:middle}
-.open .dot{background:#2e9e5b;box-shadow:0 0 0 3px rgba(46,158,91,.18)}
-.closed .dot{background:#c0392b;box-shadow:0 0 0 3px rgba(192,57,43,.15)}
-.open{color:#2e7d4f}.closed{color:#a33226}
+.strip{background:var(--ink);color:#e8ddd2;padding:17px 0}
+.strip .wrap{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;font-size:14.5px;font-weight:600}
+.strip i{color:var(--gold);font-style:normal;margin-left:7px}
 
-/* ---- sections ---- */
-section{padding:46px 0}
-h2{font-size:27px;font-weight:800;letter-spacing:-.5px;margin-bottom:8px}
-.sub{color:var(--muted);margin-bottom:26px}
+section{padding:84px 0}
+.sec-head{margin-bottom:44px;max-width:620px}
+.sec-head .eyebrow{color:var(--accent)}
+.sec-head .eyebrow::before{background:var(--accent)}
+h2{font-family:var(--serif);font-size:clamp(30px,5.2vw,45px);font-weight:900;letter-spacing:-1.1px;line-height:1.14;margin-bottom:13px}
+.sec-head p{color:var(--ink-soft);font-size:17.5px;font-weight:300}
 
-.menu-grid{display:grid;gap:14px;grid-template-columns:1fr}
-@media(min-width:620px){.menu-grid{grid-template-columns:1fr 1fr}}
-.item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:17px 19px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
-.item h3{font-size:16px;font-weight:700;margin-bottom:3px}
-.item p{font-size:14px;color:var(--muted);line-height:1.5}
-.price{font-weight:800;color:var(--accent);white-space:nowrap;font-size:16px}
+.about{display:grid;gap:40px;align-items:center;grid-template-columns:1fr}
+@media(min-width:900px){.about{grid-template-columns:1.05fr .95fr;gap:62px}}
+.about-imgs{position:relative;padding-bottom:42px;padding-left:42px}
+.about-imgs img:first-child{border-radius:var(--r);box-shadow:var(--shadow);aspect-ratio:4/5;object-fit:cover;width:100%}
+.about-imgs img:last-child{position:absolute;bottom:0;left:0;width:54%;border-radius:14px;border:7px solid var(--cream);box-shadow:var(--shadow);aspect-ratio:1;object-fit:cover}
+.about-txt p{color:var(--ink-soft);font-size:17px;margin-bottom:16px;font-weight:300}
+.about-txt .lead{font-size:20px;color:var(--ink);font-weight:400;line-height:1.6}
+.sig{font-family:var(--serif);font-size:21px;font-weight:700;margin-top:22px;color:var(--accent)}
+.sig small{display:block;font-family:var(--sans);font-size:13.5px;color:var(--muted);font-weight:400;margin-top:2px}
 
-.hours-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:8px 20px;box-shadow:var(--shadow)}
-.hours-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
-.hours-row:last-child{border-bottom:none}
-.hours-row.today{font-weight:700;color:var(--accent)}
+.menu-wrap{background:var(--card);border-radius:26px;padding:clamp(26px,4.5vw,46px);box-shadow:var(--shadow);border:1px solid var(--line)}
+.menu-tabs{display:flex;gap:9px;margin-bottom:30px;flex-wrap:wrap}
+.tab{padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:transparent;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .25s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(180,84,31,.28)}
+.menu-grid{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:680px){.menu-grid{grid-template-columns:1fr 1fr;gap:14px}}
+.dish{display:flex;gap:15px;align-items:center;padding:13px;border-radius:15px;transition:background .25s}
+.dish:hover{background:var(--accent-soft)}
+.dish img{width:78px;height:78px;border-radius:12px;object-fit:cover;flex:none}
+.dish-i{flex:1;min-width:0}
+.dish h3{font-size:16.5px;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.dish h3 .tag{font-size:10.5px;background:var(--gold);color:#fff;padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.4px}
+.dish p{font-size:14px;color:var(--muted);line-height:1.45;font-weight:300}
+.dish .pr{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:19px;white-space:nowrap}
+.menu-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px;text-align:center}
 
-.info-grid{display:grid;gap:16px;grid-template-columns:1fr}
-@media(min-width:700px){.info-grid{grid-template-columns:1fr 1fr}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
-.card h3{font-size:17px;margin-bottom:12px;font-weight:700}
-.card a{color:var(--accent);text-decoration:none;font-weight:600}
-.card .line{display:flex;gap:10px;align-items:center;padding:7px 0;font-size:15px;color:var(--muted)}
-.card .line svg{width:17px;height:17px;flex:none;color:var(--accent)}
+.gal{display:grid;gap:11px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.gal{grid-template-columns:repeat(4,1fr);gap:13px}}
+.gal img{border-radius:14px;aspect-ratio:1;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.3,1),filter .4s;width:100%}
+.gal img:hover{transform:scale(1.045);filter:brightness(1.06)}
+@media(min-width:760px){.gal img:nth-child(1){grid-row:span 2;aspect-ratio:auto;height:100%}}
 
-footer{background:var(--ink);color:#c9bcb2;padding:34px 0 90px;text-align:center;font-size:14px}
-footer a{color:#fff;text-decoration:none}
-@media(min-width:760px){footer{padding-bottom:34px}}
-.credit{margin-top:14px;font-size:12.5px;opacity:.65}
+.revs{display:grid;gap:17px;grid-template-columns:1fr}
+@media(min-width:800px){.revs{grid-template-columns:repeat(3,1fr)}}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.stars{color:var(--gold);font-size:16px;letter-spacing:2px;margin-bottom:11px}
+.rev p{font-size:15.5px;color:var(--ink-soft);margin-bottom:15px;font-weight:300;line-height:1.65}
+.rev .who{font-size:14px;font-weight:700}
+.rev .who span{color:var(--muted);font-weight:400}
+
+.visit{display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:880px){.visit{grid-template-columns:1fr 1.25fr}}
+.hours-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:11px 26px;box-shadow:var(--shadow)}
+.hrow{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.hrow:last-child{border:none}
+.hrow.today{font-weight:700;color:var(--accent)}
+.hrow.today span:first-child::after{content:"היום";font-size:11px;background:var(--accent);color:#fff;padding:2px 9px;border-radius:999px;margin-right:9px;font-weight:700;vertical-align:middle}
+.map{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line);min-height:330px;background:var(--line)}
+.map iframe{width:100%;height:100%;min-height:330px;border:0;display:block}
+.contact-row{display:grid;gap:12px;grid-template-columns:1fr;margin-top:22px}
+@media(min-width:600px){.contact-row{grid-template-columns:repeat(3,1fr)}}
+.cbox{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:19px;text-decoration:none;display:block;transition:transform .22s,box-shadow .22s,border-color .22s}
+.cbox:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--accent)}
+.cbox svg{width:21px;height:21px;color:var(--accent);margin-bottom:9px}
+.cbox b{display:block;font-size:15.5px;margin-bottom:2px}
+.cbox span{font-size:13.5px;color:var(--muted)}
+
+.cta{position:relative;padding:92px 0;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;z-index:0}
+.cta-bg img{width:100%;height:100%;object-fit:cover}
+.cta-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(143,63,20,.93),rgba(35,26,20,.92))}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{color:#fff;margin-bottom:12px}
+.cta p{color:rgba(255,255,255,.85);font-size:18px;margin-bottom:28px;font-weight:300}
+
+footer{background:var(--ink);color:#b3a396;padding:46px 0 96px;font-size:14.5px}
+.foot{display:grid;gap:26px;grid-template-columns:1fr;text-align:center}
+@media(min-width:760px){.foot{grid-template-columns:1fr auto;text-align:right;align-items:center}footer{padding-bottom:46px}}
+.foot .logo{color:#fff;font-size:24px;margin-bottom:7px}
+.foot .logo em{color:var(--gold)}
+.foot a{color:#fff;text-decoration:none}
+.socials{display:flex;gap:11px;justify-content:center}
+.socials a{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;transition:background .25s,transform .25s}
+.socials a:hover{background:var(--accent);transform:translateY(-3px)}
+.socials svg{width:18px;height:18px;color:#fff}
+.credit{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:12.5px;opacity:.6}
+
+.bar{position:fixed;bottom:0;left:0;right:0;z-index:70;display:flex;gap:1px;background:var(--line);box-shadow:0 -3px 22px rgba(35,26,20,.14)}
+.bar a{flex:1;padding:14px 6px;text-align:center;background:var(--card);text-decoration:none;font-weight:700;font-size:13.5px;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:4px}
+.bar a.main{background:var(--accent);color:#fff}
+.bar svg{width:19px;height:19px}
+@media(min-width:850px){.bar{display:none}}
 </style>
 </head>
 <body>
 
-<header>
+<header id="hd">
   <div class="wrap nav">
-    <div class="logo">קפה<span>שקד</span></div>
+    <div class="logo">קפה<em>שקד</em></div>
     <nav class="nav-links">
-      <a href="#menu">תפריט</a>
-      <a href="#hours">שעות</a>
-      <a href="#contact">צור קשר</a>
+      <a href="#about">הסיפור</a><a href="#menu">תפריט</a><a href="#gal">גלריה</a><a href="#visit">בקרו אותנו</a>
     </nav>
-    <a class="cta" href="tel:+972500000000">התקשרו עכשיו</a>
+    <a class="call" href="tel:+972500000000">הזמנת מקום</a>
   </div>
 </header>
 
+<div class="hero">
+  <div class="hero-bg"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1800&q=80" alt="פנים בית הקפה"></div>
+  <div class="wrap">
+    <div class="eyebrow">בית קפה שכונתי · מאז 2011</div>
+    <h1>הבוקר מתחיל<em>בריח של תנור</em></h1>
+    <p>מאפים שנאפים כאן כל בוקר מחמש, קפה בקליה מקומית, ופינה שקטה ברחוב הדוגמה.</p>
+    <div class="hero-btns">
+      <a class="btn btn-main" href="tel:+972500000000">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        התקשרו אלינו
+      </a>
+      <a class="btn btn-glass" href="#menu">לתפריט</a>
+    </div>
+    <div class="live" id="live"><span class="dot"></span><span id="livetxt">בודק…</span></div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <span><i>✦</i>נאפה במקום כל בוקר</span>
+    <span><i>✦</i>ישיבה בחוץ</span>
+    <span><i>✦</i>אפשרויות טבעוניות</span>
+    <span><i>✦</i>וואי-פיי חופשי</span>
+  </div>
+</div>
+
 <div class="wrap">
 
-  <section class="hero">
-    <div class="badge">★ ★ ★ ★ ★ &nbsp;בית קפה שכונתי משנת 2011</div>
-    <h1>קפה טרי,<br>מאפים מהתנור</h1>
-    <p>ארוחות בוקר כל היום, מאפים שנאפים כל בוקר במקום, ופינה שקטה ברחוב הדוגמה.</p>
-    <div class="btns">
-      <a class="btn btn-primary" href="tel:+972500000000">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-        התקשרו
-      </a>
-      <a class="btn btn-ghost" href="https://waze.com/ul?q=רחוב%20הדוגמה%2012%20תל%20אביב" target="_blank" rel="noopener">ניווט אלינו</a>
+  <section id="about">
+    <div class="about">
+      <div class="about-imgs rv">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80" alt="הכנת קפה">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="מאפים טריים">
+      </div>
+      <div class="about-txt rv">
+        <div class="eyebrow">הסיפור שלנו</div>
+        <h2>שתי ידיים,<br>תנור אחד</h2>
+        <p class="lead">התחלנו ב-2011 עם תנור יד שנייה ורשימה קצרה של מתכונים מהסבתא.</p>
+        <p>מאז לא שינינו הרבה. אותו בצק שתופח לילה שלם, אותם פולים מקליה קטנה ביפו, ואותה שעה מוקדמת שבה האור נכנס מהחלון המערבי.</p>
+        <p>כל מה שיוצא מהמטבח נאפה כאן, באותו בוקר. מה שלא נמכר — נתרם בסוף היום.</p>
+        <div class="sig">שקד ורוני<small>הבעלים</small></div>
+      </div>
     </div>
-    <div class="status" id="status"><span class="dot"></span><span id="status-text">בודק…</span></div>
   </section>
 
   <section id="menu">
-    <h2>התפריט</h2>
-    <p class="sub">מתעדכן לפי העונה — זו רק טעימה</p>
-    <div class="menu-grid">
-      <div class="item"><div><h3>ארוחת בוקר ישראלית</h3><p>שתי ביצים, סלט, גבינות, לחם הבית</p></div><div class="price">₪58</div></div>
-      <div class="item"><div><h3>קרואסון חמאה</h3><p>נאפה במקום כל בוקר</p></div><div class="price">₪14</div></div>
-      <div class="item"><div><h3>הפוך גדול</h3><p>פולים קלויים בקליה מקומית</p></div><div class="price">₪14</div></div>
-      <div class="item"><div><h3>טוסט גבינות</h3><p>עם עגבנייה ופסטו</p></div><div class="price">₪38</div></div>
-      <div class="item"><div><h3>שקשוקה</h3><p>מוגשת עם לחם הבית</p></div><div class="price">₪52</div></div>
-      <div class="item"><div><h3>עוגת שוקולד</h3><p>הכי מבוקשת אצלנו</p></div><div class="price">₪22</div></div>
+    <div class="sec-head rv">
+      <div class="eyebrow">מה יש אצלנו</div>
+      <h2>התפריט</h2>
+      <p>מתחלף עם העונה. זו טעימה ממה שתמצאו היום.</p>
     </div>
-  </section>
-
-  <section id="hours">
-    <h2>שעות פתיחה</h2>
-    <p class="sub">היום מסומן בכתום</p>
-    <div class="hours-card" id="hours-card">
-      <div class="hours-row" data-day="0"><span>ראשון</span><span>07:00 – 20:00</span></div>
-      <div class="hours-row" data-day="1"><span>שני</span><span>07:00 – 20:00</span></div>
-      <div class="hours-row" data-day="2"><span>שלישי</span><span>07:00 – 20:00</span></div>
-      <div class="hours-row" data-day="3"><span>רביעי</span><span>07:00 – 20:00</span></div>
-      <div class="hours-row" data-day="4"><span>חמישי</span><span>07:00 – 20:00</span></div>
-      <div class="hours-row" data-day="5"><span>שישי</span><span>07:00 – 15:00</span></div>
-      <div class="hours-row" data-day="6"><span>שבת</span><span>סגור</span></div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>צור קשר</h2>
-    <p class="sub">הדרך הכי מהירה — פשוט להתקשר</p>
-    <div class="info-grid">
-      <div class="card">
-        <h3>פרטים</h3>
-        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg><a href="tel:+972500000000">050-000-0000</a></div>
-        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>רחוב הדוגמה 12, תל אביב</div>
-        <div class="line"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>hello@example.co.il</div>
+    <div class="menu-wrap rv">
+      <div class="menu-tabs">
+        <button class="tab on" data-c="all">הכל</button>
+        <button class="tab" data-c="bf">ארוחות בוקר</button>
+        <button class="tab" data-c="bk">מאפים</button>
+        <button class="tab" data-c="dr">שתייה</button>
       </div>
-      <div class="card">
-        <h3>הזמנות וקייטרינג</h3>
-        <p style="color:var(--muted);font-size:15px;margin-bottom:14px">מזמינים מראש לאירועים, ישיבות ומגשי אירוח.</p>
-        <a href="https://wa.me/972500000000" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:15px">שלחו הודעה בוואטסאפ</a>
-      </div>
+      <div class="menu-grid" id="mg"></div>
+      <div class="menu-note">אלרגיות? ספרו לנו ונתאים. יש אפשרויות טבעוניות וללא גלוטן.</div>
     </div>
   </section>
 
+  <section id="gal">
+    <div class="sec-head rv">
+      <div class="eyebrow">הצצה פנימה</div>
+      <h2>המקום</h2>
+    </div>
+    <div class="gal rv">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80" alt="קפה">
+      <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=600&q=80" alt="פינת ישיבה">
+      <img src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&q=80" alt="מאפים">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="שולחן">
+      <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="קרואסון">
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head rv">
+      <div class="eyebrow">מה אומרים</div>
+      <h2>לקוחות קבועים</h2>
+    </div>
+    <div class="revs">
+      <div class="rev rv"><div class="stars">★★★★★</div><p>"הקרואסון הכי טוב בעיר, ואני אומרת את זה אחרי שנתיים של חיפושים. באה לכאן כל שישי בבוקר."</p><div class="who">מיכל ל. <span>· לקוחה קבועה</span></div></div>
+      <div class="rev rv"><div class="stars">★★★★★</div><p>"מקום קטן, אנשים נחמדים, והקפה באמת שונה. יושב פה עם הלפטופ כמעט כל יום ואף אחד לא מזרז אותי."</p><div class="who">דני א. <span>· שכן</span></div></div>
+      <div class="rev rv"><div class="stars">★★★★★</div><p>"הזמנו מגשי אירוח לאירוע במשרד. הגיע בזמן, נראה מדהים, וכולם שאלו מאיפה זה."</p><div class="who">תמר ש. <span>· הזמנת קייטרינג</span></div></div>
+    </div>
+  </section>
+
+  <section id="visit">
+    <div class="sec-head rv">
+      <div class="eyebrow">בואו אלינו</div>
+      <h2>שעות ומיקום</h2>
+    </div>
+    <div class="visit">
+      <div class="hours-card rv">
+        <div class="hrow" data-d="0"><span>ראשון</span><span>07:00 – 20:00</span></div>
+        <div class="hrow" data-d="1"><span>שני</span><span>07:00 – 20:00</span></div>
+        <div class="hrow" data-d="2"><span>שלישי</span><span>07:00 – 20:00</span></div>
+        <div class="hrow" data-d="3"><span>רביעי</span><span>07:00 – 20:00</span></div>
+        <div class="hrow" data-d="4"><span>חמישי</span><span>07:00 – 20:00</span></div>
+        <div class="hrow" data-d="5"><span>שישי</span><span>07:00 – 15:00</span></div>
+        <div class="hrow" data-d="6"><span>שבת</span><span>סגור</span></div>
+      </div>
+      <div class="map rv">
+        <iframe loading="lazy" title="מפה" src="https://www.openstreetmap.org/export/embed.html?bbox=34.7658%2C32.0753%2C34.7978%2C32.0953&layer=mapnik&marker=32.0853%2C34.7818"></iframe>
+      </div>
+    </div>
+    <div class="contact-row">
+      <a class="cbox rv" href="tel:+972500000000">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        <b>050-000-0000</b><span>לחצו להתקשר</span>
+      </a>
+      <a class="cbox rv" href="https://waze.com/ul?q=רחוב הדוגמה 12 תל אביב" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        <b>רחוב הדוגמה 12</b><span>תל אביב · ניווט</span>
+      </a>
+      <a class="cbox rv" href="https://wa.me/972500000000" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        <b>וואטסאפ</b><span>הזמנות וקייטרינג</span>
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<div class="cta">
+  <div class="cta-bg"><img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?w=1600&q=80" alt=""></div>
+  <div class="wrap">
+    <h2>מתכננים אירוע?</h2>
+    <p>מגשי אירוח, ישיבות ואירועים קטנים — בהזמנה מראש.</p>
+    <a class="btn btn-main" href="https://wa.me/972500000000" target="_blank" rel="noopener">דברו איתנו בוואטסאפ</a>
+  </div>
 </div>
 
 <footer>
   <div class="wrap">
-    <strong style="color:#fff;font-size:17px">קפה שקד</strong>
-    <p style="margin-top:6px">רחוב הדוגמה 12, תל אביב · <a href="tel:+972500000000">050-000-0000</a></p>
-    <p class="credit">אתר לדוגמה — נבנה כהדגמה</p>
+    <div class="foot">
+      <div>
+        <div class="logo">קפה<em>שקד</em></div>
+        <p>רחוב הדוגמה 12, תל אביב · <a href="tel:+972500000000">050-000-0000</a></p>
+        <p style="margin-top:4px">א׳–ה׳ 07:00–20:00 · ו׳ 07:00–15:00 · שבת סגור</p>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 3.3a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm0 10.7a4.2 4.2 0 1 1 0-8.4 4.2 4.2 0 0 1 0 8.4zm6.8-11a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/></svg></a>
+        <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="https://wa.me/972500000000" aria-label="וואטסאפ"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg></a>
+      </div>
+    </div>
+    <div class="credit">אתר לדוגמה · נבנה כהדגמה</div>
   </div>
 </footer>
 
-<!-- mobile sticky bar -->
-<div class="callbar">
-  <a class="primary" href="tel:+972500000000">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-    התקשרו
-  </a>
-  <a href="https://waze.com/ul?q=רחוב%20הדוגמה%2012%20תל%20אביב" target="_blank" rel="noopener">ניווט</a>
-  <a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a>
+<div class="bar">
+  <a class="main" href="tel:+972500000000">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>התקשרו</a>
+  <a href="https://waze.com/ul?q=רחוב הדוגמה 12 תל אביב" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>ניווט</a>
+  <a href="https://wa.me/972500000000" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-2.9.8.8-2.8-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>וואטסאפ</a>
 </div>
 
 <script>
-// Live open/closed status + today's row highlight.
-// Hours as [open, close] in minutes; null = closed. Index = JS day (0=Sunday).
-var HOURS = [[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,900],null];
-function render(){
-  var now = new Date();
-  var day = now.getDay();
-  var mins = now.getHours()*60 + now.getMinutes();
-  var today = HOURS[day];
-  var el = document.getElementById('status');
-  var txt = document.getElementById('status-text');
-  var isOpen = !!today && mins >= today[0] && mins < today[1];
-  el.className = 'status ' + (isOpen ? 'open' : 'closed');
-  if (isOpen) {
-    var left = today[1] - mins;
-    txt.textContent = left <= 60 ? 'פתוח — נסגר בעוד ' + left + ' דק\'' : 'פתוח עכשיו';
-  } else {
-    // find the next day that has hours
-    var d = day, hops = 0;
-    while (hops < 7) { d = (d+1)%7; hops++; if (HOURS[d]) break; }
-    var names = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
-    var opensToday = today && mins < today[0];
-    txt.textContent = opensToday ? 'סגור — נפתח היום ב-' + String(Math.floor(today[0]/60)).padStart(2,'0') + ':00'
-                                 : 'סגור — נפתח ב' + names[d];
-  }
-  var row = document.querySelector('.hours-row[data-day="' + day + '"]');
-  if (row) row.classList.add('today');
+var DISHES=[
+ {c:"bf",n:"ארוחת בוקר ישראלית",d:"שתי ביצים, סלט קצוץ, גבינות, לחם הבית",p:58,img:"1533089860892-a7c6f0a88666",tag:"הכי מוזמן"},
+ {c:"bf",n:"שקשוקה",d:"עגבניות, פלפל שרוף, ביצים, לחם לטבילה",p:52,img:"1482049016688-2d3e1b311543"},
+ {c:"bf",n:"טוסט גבינות ופסטו",d:"גבינה צהובה, עגבנייה, פסטו ביתי",p:38,img:"1528736235302-52922df5c122"},
+ {c:"bk",n:"קרואסון חמאה",d:"בצק שתופח לילה שלם, נאפה מחמש בבוקר",p:14,img:"1555507036-ab1f4038808a",tag:"טרי מהתנור"},
+ {c:"bk",n:"בורקס תפוחי אדמה",d:"עלים דקים, מלית חמה",p:16,img:"1509440159596-0249088772ff"},
+ {c:"bk",n:"עוגת שוקולד",d:"לחה, 70% מריר, נאפית כל יומיים",p:22,img:"1578985545062-69928b1d9587"},
+ {c:"dr",n:"הפוך גדול",d:"פולים מקליה קטנה ביפו",p:14,img:"1572442388796-11668a67e53d"},
+ {c:"dr",n:"קפה קר",d:"חליטה קרה של 18 שעות",p:16,img:"1461023058943-07fcbe16d735"},
+ {c:"dr",n:"לימונדה נענע",d:"נסחט במקום",p:15,img:"1621263764928-df1444c5e859"}
+];
+var mg=document.getElementById('mg');
+function draw(cat){
+  mg.innerHTML=DISHES.filter(function(x){return cat==='all'||x.c===cat}).map(function(x){
+    return '<div class="dish"><img loading="lazy" src="https://images.unsplash.com/photo-'+x.img+'?w=200&q=75" alt="'+x.n+'">'+
+      '<div class="dish-i"><h3>'+x.n+(x.tag?'<span class="tag">'+x.tag+'</span>':'')+'</h3><p>'+x.d+'</p></div>'+
+      '<div class="pr">\u20AA'+x.p+'</div></div>';
+  }).join('');
 }
-render();
-setInterval(render, 60000);
+draw('all');
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(o){o.classList.remove('on')});
+    t.classList.add('on'); draw(t.dataset.c);
+  });
+});
+
+var HOURS=[[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,900],null];
+var DAYS=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+function tick(){
+  var now=new Date(), day=now.getDay(), m=now.getHours()*60+now.getMinutes(), t=HOURS[day];
+  var el=document.getElementById('live'), tx=document.getElementById('livetxt');
+  var open=!!t&&m>=t[0]&&m<t[1];
+  el.className='live '+(open?'open':'closed');
+  if(open){var left=t[1]-m; tx.textContent=left<=60?'פתוח · נסגר בעוד '+left+' דק\'':'פתוח עכשיו · עד '+Math.floor(t[1]/60)+':00';}
+  else if(t&&m<t[0]){tx.textContent='נפתח היום ב-'+String(Math.floor(t[0]/60)).padStart(2,'0')+':00';}
+  else{var d=day,h=0;while(h<7){d=(d+1)%7;h++;if(HOURS[d])break;} tx.textContent='סגור · נפתח ביום '+DAYS[d];}
+  var r=document.querySelector('.hrow[data-d="'+day+'"]'); if(r)r.classList.add('today');
+}
+tick(); setInterval(tick,60000);
+
+var hd=document.getElementById('hd');
+function onScroll(){hd.classList.toggle('solid',window.scrollY>80)}
+onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e,i){ if(e.isIntersecting){ setTimeout(function(){e.target.classList.add('in')}, (i%4)*70); io.unobserve(e.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+}else{document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')})}
 </script>
 </body>
 </html>
